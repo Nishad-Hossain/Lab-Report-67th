@@ -1,0 +1,26 @@
+#include <stdio.h>
+
+// Recursive function to calculate sum of natural numbers
+int sumNatural(int n) {
+    if(n == 0) {
+        return 0; // Base case
+    } else {
+        return n + sumNatural(n - 1); // Recursive call
+    }
+}
+
+int main() {
+    int n;
+
+    printf("Enter a natural number: ");
+    scanf("%d", &n);
+
+    if(n < 0) {
+        printf("Please enter a positive number.\n");
+    } else {
+        int sum = sumNatural(n);
+        printf("Sum of first %d natural numbers is: %d\n", n, sum);
+    }
+
+    return 0;
+}
