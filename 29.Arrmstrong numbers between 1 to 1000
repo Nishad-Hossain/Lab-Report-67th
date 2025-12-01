@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    int num, originalNum, remainder, n;
+    double sum;
+
+    printf("Armstrong numbers between 1 and 1000 are:\n");
+
+    for (num = 1; num <= 1000; num++) {
+        originalNum = num;
+        sum = 0;
+
+        // Count number of digits
+        n = 0;
+        while (originalNum != 0) {
+            originalNum /= 10;
+            n++;
+        }
+
+        originalNum = num;
+
+        // Calculate sum of digits raised to the power n
+        while (originalNum != 0) {
+            remainder = originalNum % 10;
+            sum += pow(remainder, n);
+            origina
+
