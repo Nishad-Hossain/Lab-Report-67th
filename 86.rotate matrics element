@@ -1,0 +1,69 @@
+
+#include <stdio.h>
+
+int main() {
+    int rows, cols, i, j, temp, prev;
+    
+    // Input matrix size
+    printf("Enter number of rows and columns: ");
+    scanf("%d %d", &rows, &cols);
+    
+    int mat[rows][cols];
+    
+    // Input matrix elements
+    printf("Enter elements of the matrix:\n");
+    for(i = 0; i < rows; i++)
+        for(j = 0; j < cols; j++)
+            scanf("%d", &mat[i][j]);
+    
+    // Rotate matrix elements clockwise by one
+    int rowStart = 0, rowEnd = rows - 1;
+    int colStart = 0, colEnd = cols - 1;
+    
+    while(rowStart < rowEnd && colStart < colEnd) {
+        prev = mat[rowStart + 1][colStart];
+        
+        // Top row
+        for(i = colStart; i <= colEnd; i++) {
+            temp = mat[rowStart][i];
+            mat[rowStart][i] = prev;
+            prev = temp;
+        }
+        rowStart++;
+        
+        // Right column
+        for(i = rowStart; i <= rowEnd; i++) {
+            temp = mat[i][colEnd];
+            mat[i][colEnd] = prev;
+            prev = temp;
+        }
+        colEnd--;
+        
+        // Bottom row
+        for(i = colEnd; i >= colStart; i--) {
+            temp = mat[rowEnd][i];
+            mat[rowEnd][i] = prev;
+            prev = temp;
+        }
+        rowEnd--;
+        
+        // Left column
+        for(i = rowEnd; i >= rowStart; i--) {
+            temp = mat[i][colStart];
+            mat[i][colStart] = prev;
+            prev = temp;
+        }
+        colStart++;
+    }
+    
+    // Print rotated matrix
+    printf("Matrix after rotating elements clockwise by one:\n");
+    for(i = 0; i < rows; i++) {
+        for(j = 0; j < cols; j++) {
+            printf("%d ", mat[i][j]);
+        }
+        printf("\n");
+    }
+    
+    return 0;
+}
