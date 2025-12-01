@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+int main() {
+    int i, j, n, num = 1, total;
+
+    printf("Enter the number of rows: ");
+    scanf("%d", &n);
+
+    // Calculate total numbers in Floyd's triangle
+    total = n * (n + 1) / 2;
+    num = total; // Start from the largest number
+
+    for(i = n; i >= 1; i--) {
+        // Print leading spaces for pyramid shape
+        for(j = 1; j <= n - i; j++) {
+            printf(" ");
+        }
+        // Print numbers consecutively
+        for(j = 1; j <= i; j++) {
+            printf("%d ", num);
+            num--;
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
