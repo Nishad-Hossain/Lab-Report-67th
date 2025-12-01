@@ -1,0 +1,44 @@
+#include <stdio.h>
+
+int main() {
+    int n;
+    printf("Enter the number of elements in the sorted array: ");
+    scanf("%d", &n);
+
+    int arr[n];
+    printf("Enter %d elements in sorted order:\n", n);
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    if (n == 0) {
+        printf("Array is empty.\n");
+        return 0;
+    }
+
+    int temp[n]; // Temporary array to store unique elements
+    int j = 0;   // Index for temp array
+
+    temp[j++] = arr[0]; // First element is always unique
+
+    // Traverse the array and store only unique elements
+    for (int i = 1; i < n; i++) {
+        if (arr[i] != arr[i - 1]) {
+            temp[j++] = arr[i];
+        }
+    }
+
+    // Copy unique elements back to original array (optional)
+    for (int i = 0; i < j; i++) {
+        arr[i] = temp[i];
+    }
+
+    // Print the array without duplicates
+    printf("Array after removing duplicates:\n");
+    for (int i = 0; i < j; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
