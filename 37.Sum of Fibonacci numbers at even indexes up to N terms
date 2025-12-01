@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+int main() {
+    int n, i;
+    int a = 0, b = 1, next;
+    int sum = 0;
+
+    // Input number of terms
+    printf("Enter the number of terms: ");
+    scanf("%d", &n);
+
+    for(i = 0; i < n; i++) {
+        // Add Fibonacci number at even index
+        if(i % 2 == 0) {
+            sum += a;
+        }
+
+        // Generate next Fibonacci number
+        next = a + b;
+        a = b;
+        b = next;
+    }
+
+    printf("Sum of Fibonacci numbers at even indexes up to %d terms = %d\n", n, sum);
+
+    return 0;
+}
