@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+int main() {
+    float a1, b1, a2, b2;  // a + bi
+    float real, imag;
+
+    // Input first complex number
+    printf("Enter real and imaginary part of first complex number: ");
+    scanf("%f %f", &a1, &b1);
+
+    // Input second complex number
+    printf("Enter real and imaginary part of second complex number: ");
+    scanf("%f %f", &a2, &b2);
+
+    // Addition
+    real = a1 + a2;
+    imag = b1 + b2;
+
+    printf("Sum of complex numbers = %.2f + %.2fi\n", real, imag);
+
+    return 0;
+}
