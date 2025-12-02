@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    char str[100];
+    char *endptr;
+    long num;
+
+    printf("Enter a numeric string: ");
+    gets(str);
+
+    // Convert string to long
+    num = strtol(str, &endptr, 10);  // base 10
+
+    // Check if conversion is valid
+    if (*endptr != '\0') {
+        printf("Invalid number!\n");
+    } else {
+        printf("String as long: %ld\n", num);
+    }
+
+    return 0;
+}
