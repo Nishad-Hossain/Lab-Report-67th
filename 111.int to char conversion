@@ -1,0 +1,20 @@
+#include <stdio.h>
+
+int main() {
+    int num;
+    char ch;
+
+    printf("Enter an integer (0-127 for ASCII): ");
+    scanf("%d", &num);
+
+    if (num < 0 || num > 127) {
+        printf("Invalid ASCII value!\n");
+        return 0;
+    }
+
+    ch = (char)num;  // Type casting int to char
+
+    printf("Integer %d as character: %c\n", num, ch);
+
+    return 0;
+}
