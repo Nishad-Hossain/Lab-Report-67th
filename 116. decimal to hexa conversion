@@ -1,0 +1,14 @@
+#include <stdio.h>
+
+int main() {
+    int decimal;
+
+    printf("Enter a decimal number: ");
+    scanf("%d", &decimal);
+
+    printf("Decimal %d in hexadecimal = %X\n", decimal, decimal);  // Uppercase letters
+    // printf("%x\n", decimal);  // Lowercase letters
+
+    return 0;
+}
+
