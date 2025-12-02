@@ -1,0 +1,17 @@
+#include <stdio.h>
+
+int main() {
+    int *arr[3][4]; // 3 rows, 4 columns, each element is an int pointer
+
+    int a = 10, b = 20, c = 30;
+
+    arr[0][0] = &a;
+    arr[1][2] = &b;
+    arr[2][3] = &c;
+
+    printf("Value at arr[0][0]: %d\n", *arr[0][0]);
+    printf("Value at arr[1][2]: %d\n", *arr[1][2]);
+    printf("Value at arr[2][3]: %d\n", *arr[2][3]);
+
+    return 0;
+}
