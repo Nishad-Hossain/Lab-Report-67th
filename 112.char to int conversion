@@ -1,0 +1,20 @@
+#include <stdio.h>
+
+int main() {
+    char ch;
+    int num;
+
+    printf("Enter a digit character (0-9): ");
+    scanf("%c", &ch);
+
+    if (ch < '0' || ch > '9') {
+        printf("Invalid digit character!\n");
+        return 0;
+    }
+
+    num = ch - '0';  // Convert character to integer
+
+    printf("Character %c as integer: %d\n", ch, num);
+
+    return 0;
+}
