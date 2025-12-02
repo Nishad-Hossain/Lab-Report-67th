@@ -1,0 +1,12 @@
+#include <stdio.h>
+
+int main() {
+    int decimal;
+    printf("Enter a hexadecimal number (e.g., 1A3F): ");
+    scanf("%x", &decimal);  // %x reads hex input
+
+    printf("Decimal equivalent = %d\n", decimal);
+
+    return 0;
+}
+
