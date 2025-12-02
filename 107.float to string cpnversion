@@ -1,0 +1,17 @@
+#include <stdio.h>
+
+int main() {
+    float num;
+    char str[50];
+
+    printf("Enter a float number: ");
+    scanf("%f", &num);
+
+    // Convert float to string
+    sprintf(str, "%f", num);  // Default 6 decimal places
+    // Or use %.2f for 2 decimal places: sprintf(str, "%.2f", num);
+
+    printf("Float as string: %s\n", str);
+
+    return 0;
+}
