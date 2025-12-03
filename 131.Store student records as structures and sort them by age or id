@@ -1,0 +1,85 @@
+#include <stdio.h>
+#include <string.h>
+
+// Define a structure to store student information
+struct Student {
+    char name[50];
+    int id;
+    int age;
+};
+
+// Function to swap two Student structures
+void swap(struct Student *a, struct Student *b) {
+    struct Student temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+// Function to sort students by ID
+void sortByID(struct Student students[], int n) {
+    for(int i = 0; i < n-1; i++) {
+        for(int j = i+1; j < n; j++) {
+            if(students[i].id > students[j].id) {
+                swap(&students[i], &students[j]);
+            }
+        }
+    }
+}
+
+// Function to sort students by age
+void sortByAge(struct Student students[], int n) {
+    for(int i = 0; i < n-1; i++) {
+        for(int j = i+1; j < n; j++) {
+            if(students[i].age > students[j].age) {
+                swap(&students[i], &students[j]);
+            }
+        }
+    }
+}
+
+// Function to display students
+void displayStudents(struct Student students[], int n) {
+    printf("\nID\tName\t\tAge\n");
+    printf("----------------------------\n");
+    for(int i = 0; i < n; i++) {
+        printf("%d\t%-15s\t%d\n", students[i].id, students[i].name, students[i].age);
+    }
+}
+
+int main() {
+    int n, choice;
+    
+    printf("Enter number of students: ");
+    scanf("%d", &n);
+    
+    struct Student students[n];
+    
+    // Input student data
+    for(int i = 0; i < n; i++) {
+        printf("\nEnter details for student %d:\n", i+1);
+        printf("Name: ");
+        scanf(" %[^\n]", students[i].name); // read full name with spaces
+        printf("ID: ");
+        scanf("%d", &students[i].id);
+        printf("Age: ");
+        scanf("%d", &students[i].age);
+    }
+    
+    // Ask user how to sort
+    printf("\nSort students by:\n1. ID\n2. Age\nEnter choice: ");
+    scanf("%d", &choice);
+    
+    if(choice == 1) {
+        sortByID(students, n);
+        printf("\nStudents sorted by ID:\n");
+    } else if(choice == 2) {
+        sortByAge(students, n);
+        printf("\nStudents sorted by Age:\n");
+    } else {
+        printf("Invalid choice! Displaying unsorted data.\n");
+    }
+    
+    displayStudents(students, n);
+    
+    return 0;
+}
