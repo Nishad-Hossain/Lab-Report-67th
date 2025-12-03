@@ -1,0 +1,51 @@
+#include <stdio.h>
+#include <string.h>
+
+// Define a structure
+struct Student {
+    char name[50];
+    int id;
+    float marks;
+};
+
+int main() {
+    FILE *fp;
+    struct Student s1, s2;
+
+    // Input data for a student
+    printf("Enter student details:\n");
+    printf("Name: ");
+    scanf(" %[^\n]", s1.name); // Read full name with spaces
+    printf("ID: ");
+    scanf("%d", &s1.id);
+    printf("Marks: ");
+    scanf("%f", &s1.marks);
+
+    // Write the structure to a file
+    fp = fopen("student.dat", "wb"); // write in binary mode
+    if (fp == NULL) {
+        printf("Error opening file!\n");
+        return 1;
+    }
+    fwrite(&s1, sizeof(struct Student), 1, fp);
+    fclose(fp);
+    printf("\nStudent data written to file successfully.\n");
+
+    // Read the structure back from the file
+    fp = fopen("student.dat", "rb"); // read in binary mode
+    if (fp == NULL) {
+        printf("Error opening file!\n");
+        return 1;
+    }
+    fread(&s2, sizeof(struct Student), 1, fp);
+    fclose(fp);
+
+    // Display the data read from file
+    printf("\nStudent details read from file:\n");
+    printf("Name: %s\n", s2.name);
+    printf("ID: %d\n", s2.id);
+    printf("Marks: %.2f\n", s2.marks);
+
+    return 0;
+}
+`
