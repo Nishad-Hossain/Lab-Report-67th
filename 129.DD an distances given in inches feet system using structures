@@ -1,0 +1,54 @@
+#include <stdio.h>
+
+// Define a structure to store distance in feet and inches
+struct Distance {
+    int feet;
+    float inches;
+};
+
+// Function to display a distance
+void displayDistance(struct Distance d) {
+    printf("%d feet %.2f inches\n", d.feet, d.inches);
+}
+
+// Function to add two distances
+struct Distance addDistance(struct Distance d1, struct Distance d2) {
+    struct Distance sum;
+    sum.feet = d1.feet + d2.feet;
+    sum.inches = d1.inches + d2.inches;
+
+    // If inches >= 12, convert to feet
+    if(sum.inches >= 12.0) {
+        sum.feet += (int)(sum.inches / 12);
+        sum.inches = fmod(sum.inches, 12.0);
+    }
+
+    return sum;
+}
+
+int main() {
+    struct Distance d1, d2, total;
+
+    // Input first distance
+    printf("Enter first distance (feet and inches):\n");
+    printf("Feet: ");
+    scanf("%d", &d1.feet);
+    printf("Inches: ");
+    scanf("%f", &d1.inches);
+
+    // Input second distance
+    printf("\nEnter second distance (feet and inches):\n");
+    printf("Feet: ");
+    scanf("%d", &d2.feet);
+    printf("Inches: ");
+    scanf("%f", &d2.inches);
+
+    // Add the distances
+    total = addDistance(d1, d2);
+
+    // Display the result
+    printf("\nTotal Distance: ");
+    displayDistance(total);
+
+    return 0;
+}
