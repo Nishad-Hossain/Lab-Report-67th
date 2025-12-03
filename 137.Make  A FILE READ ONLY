@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+int main() {
+    FILE *fp;
+    char filename[100];
+    char ch;
+
+    // Input file name
+    printf("Enter the file name to open in read-only mode: ");
+    scanf(" %[^\n]", filename);
+
+    // Open file in read-only mode
+    fp = fopen(filename, "r");  // "r" mode is read-only
+    if (fp == NULL) {
+        perror("Error opening file");
+        return 1;
+    }
+
+    printf("\nFile opened in read-only mode. Contents:\n");
+
+    // Read and display the content
+    while ((ch = fgetc(fp)) != EOF) {
+        putchar(ch);
+    }
+
+    fclose(fp);
+    return 0;
+}
