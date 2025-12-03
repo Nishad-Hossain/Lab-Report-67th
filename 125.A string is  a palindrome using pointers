@@ -1,0 +1,37 @@
+#include <stdio.h>
+
+int main() {
+    char str[100];
+    char *start, *end;
+
+    printf("Enter a string: ");
+    scanf("%s", str);
+
+    start = str;                 // Points to the first character
+    end = str;                   // Will move to last character
+
+    // Move 'end' pointer to the last character
+    while (*end != '\0') {
+        end++;
+    }
+    end--;                       // Move back from '\0' to last valid character
+
+    int isPalindrome = 1;
+
+    while (start < end) {
+        if (*start != *end) {
+            isPalindrome = 0;
+            break;
+        }
+        start++;
+        end--;
+    }
+
+    if (isPalindrome)
+        printf("The string is a palindrome.");
+    else
+        printf("The string is NOT a palindrome.");
+
+    return 0;
+}
+
